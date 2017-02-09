@@ -5,8 +5,8 @@ class Ingredient < ApplicationRecord
 
  private
 
- def check_for_orders
-   if dose.count > 0
+ def check_for_cocktails
+   if doses.count > 0
      errors.add_to_base("cannot delete ingredient while cocktails exist")
      return false
    end
