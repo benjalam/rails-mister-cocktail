@@ -1,8 +1,23 @@
 <h1>List of all cocktails</h1>
-<ul>
 <%= link_to "Add a cocktail", new_cocktail_path %>
+
 <% @cocktails.each do |cocktail| %>
-<li><%= cocktail.name %></li>
-<%= link_to "lien", cocktail_path(cocktail)%>
+  <div class="product">
+    <div class='product-upvote'>
+      <div class="product-arrow"></div>
+      <div class='product-count'>95</div>
+    </div>
+    <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
+    <div class='product-body'>
+      <h3><%= cocktail.name %></h3>
+       <% cocktail.doses.each do |dose| %>
+        <p><%= dose.description %> of <%= dose.ingredient.name %></p>
+       <% end %>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <li><a href=""><i class="fa fa-heart"></i></a></li>
+      <li><a href=""><i class="fa fa-share"></i></a></li>
+      <li><a href=""><i class="fa fa-star"></i></a></li>
+    </ul>
+  </div>
 <% end %>
-</ul>
