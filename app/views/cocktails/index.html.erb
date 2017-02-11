@@ -1,23 +1,43 @@
-<h1>List of all cocktails</h1>
-<%= link_to "Add a cocktail", new_cocktail_path %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://unsplash.it/1000/200?random');">
+  <div class="banner-content">
+    <h1>List of all cocktails</h1>
+    <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary btn-lg" %>
+  </div>
+</div>
 
+<div class="container">
 <% @cocktails.each do |cocktail| %>
   <div class="product">
     <div class='product-upvote'>
       <div class="product-arrow"></div>
       <div class='product-count'>95</div>
     </div>
-    <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
-    <div class='product-body'>
+    <%= cl_image_tag cocktail.photo, height: 100, crop: :fit, class: "product-image hidden-xs" %>
+    <div class='product-body' data-toggle="modal" data-target="#cocktail-<%= cocktail.id %>-modal">
       <h3><%= cocktail.name %></h3>
        <% cocktail.doses.each do |dose| %>
         <p><%= dose.description %> of <%= dose.ingredient.name %></p>
        <% end %>
     </div>
     <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><a href=""><i class="fa fa-heart"></i></a></li>
-      <li><a href=""><i class="fa fa-share"></i></a></li>
-      <li><a href=""><i class="fa fa-star"></i></a></li>
+      <li><i class="fa fa-heart"></i></a></li>
+      <li><i class="fa fa-share"></i></a></li>
+      <li><i class="fa fa-star"></i></a></li>
     </ul>
   </div>
+  <div class="modal fade" id="cocktail-<%= cocktail.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           </div>
+           <div class="modal-body">
+           <%= render 'shared/cocktail', cocktail: cocktail %>
+           </div>
+         </div>
+       </div>
+     </div>
 <% end %>
+</div>
+
+

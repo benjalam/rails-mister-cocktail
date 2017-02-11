@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  border-radius: 3px;
-  transition: all 0.15s ease;
+  border-radius: 10px;
+  position: relative;
+  transition: all .2s ease;
+  margin: 10px;
 }
 
 /* Body design */
@@ -25,7 +27,6 @@
 .product-image {
   border-radius: 10px;
   margin-right: 20px;
-  width: 175px;
 }
 
 /* Upvote design */
@@ -36,6 +37,17 @@
   font-weight: bold;
   font-size: 13px;
   line-height: 20px;
+}
+
+.product-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
 }
 .product-count {
   margin: 2px 0 0;
@@ -59,15 +71,15 @@
   text-align: center;
   margin: 0px;
 }
-.product-controls a {
+.product-controls{
   padding: 0 20px;
   font-size: 17px;
   color: #E6E6E6;
 }
-.product-controls a:hover {
+.product-controls :hover {
   color: #D3473C !important
 }
-.product-controls-hidden a {
+.product-controls-hidden  {
   color: transparent;
   font-size: 15px;
   transition: all 0.15s ease;
@@ -78,6 +90,7 @@
 .product:hover {
   background: #f7f7fa;
   cursor: pointer;
+  transform: scale(1.1);
 }
 .product-upvote:hover, .product-upvote.product-upvote-upvoted {
   color: #5898f1;
@@ -87,5 +100,5 @@
   border-bottom-color: #5898f1;
 }
 // .product:hover .product-upvote { transform: scale(1.2) }
-.product:hover .product-controls-hidden a { color: #E6E6E6 }
+.product:hover .product-controls-hidden { color: #E6E6E6 }
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }

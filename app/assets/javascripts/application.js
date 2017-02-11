@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+$(document).ready(function(){
+
+   $(".showmyform").click(function(){
+       $(".formidable").removeClass("hidden");
+   });
+
+});

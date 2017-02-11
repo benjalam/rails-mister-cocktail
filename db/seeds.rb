@@ -24,5 +24,6 @@ Cocktail.destroy_all
 cocktails = JSON.parse(open(urlb).read)
 
 cocktails["drinks"].each do |ing|
-  Cocktail.create(name: ing["strDrink"].to_s)
+  cocktail = Cocktail.create(name: ing["strDrink"], remote_photo_url: ing["strDrinkThumb"])
 end
+
